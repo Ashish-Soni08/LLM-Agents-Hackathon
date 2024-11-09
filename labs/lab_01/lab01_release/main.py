@@ -1,17 +1,34 @@
-from typing import Dict, List
-from autogen import ConversableAgent
 import sys
 import os
 
+from typing import Dict, List
+
+import json
+
+from autogen import ConversableAgent
+
+
 def fetch_restaurant_data(restaurant_name: str) -> Dict[str, List[str]]:
-    # TODO
-    # This function takes in a restaurant name and returns the reviews for that restaurant. 
-    # The output should be a dictionary with the key being the restaurant name and the value being a list of reviews for that restaurant.
-    # The "data fetch agent" should have access to this function signature, and it should be able to suggest this as a function call. 
-    # Example:
-    # > fetch_restaurant_data("Applebee's")
-    # {"Applebee's": ["The food at Applebee's was average, with nothing particularly standing out.", ...]}
-    pass
+    """
+    Fetches reviews for a given restaurant from a dataset.
+
+    Args:
+        restaurant_name (str): The name of the restaurant to fetch reviews for.
+
+    Returns:
+        Dict[str, List[str]]: A dictionary with the restaurant name as the key and a list of reviews as the value.
+        If no reviews are found for the restaurant, returns a dictionary with a message indicating no reviews found.
+
+    Example:
+        >>> fetch_restaurant_data("Applebee's")
+        {"Applebee's": ["The food at Applebee's was average, with nothing particularly standing out.", ...]}
+    """
+    with open("restaurant_review_dataset.txt", "r") as f:
+        data = json.load(f)
+        if restaurant_name not in data:
+            return {restaurant_name: ["Sorry, No reviews found for this restaurant"]}
+        else:
+            return {restaurant_name: data[restaurant_name]}
 
 
 def calculate_overall_score(restaurant_name: str, food_scores: List[int], customer_service_scores: List[int]) -> Dict[str, float]:

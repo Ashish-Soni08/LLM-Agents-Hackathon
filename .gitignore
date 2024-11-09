@@ -2,6 +2,9 @@
 
 .env
 
+# Virtual environment for lab 1
+/labs/lab_01/lab01_release/lab-01
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

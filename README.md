@@ -1,2 +1,3 @@
-# LLM-Agents-Hackathon
-hosted by Berkeley RDI and in conjunction with the LLM Agents MOOC
+# Streamlined Data Analysis: Report Generation with LLM Agents
+
+![AI Buddy for Data Analysis](/images/ai_buddy.png)
